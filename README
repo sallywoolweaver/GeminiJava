@@ -69,7 +69,7 @@ demo/ ├─ pom.xml └─ src └─ main └─ java └─ com └─ exampl
    ```bash
    mvn clean install
    ```
-
+---
 ## Usage
 Once built, you can **run** the chatbot via:
 
@@ -84,7 +84,7 @@ Enter your message (or type 'exit' to quit):
 ```
 
 Type any message, e.g. “How are you?” The bot will respond in pirate speech. Type exit to stop.
-
+---
 ## How It Works
 
 System Message
@@ -95,9 +95,9 @@ private static final String SYSTEM_MESSAGE =
 ```
 
 This guides the model’s style.
-
+---
 ## HTTP Request
-OkHttp builds a POST request to:
+Http builds a POST request to:
 
 ```bash
 https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=YOUR_API_KEY
@@ -118,14 +118,14 @@ The JSON sent looks like:
 ```
 
 Note: Some accounts return data under "candidates" instead of "contents". The code is adjusted to parse the correct fields based on your specific response format.
-
+---
 ## Parse the Response
 We use Gson to parse the JSON.
 The relevant text is extracted from candidates[0].content.parts[0].text (or similar) and returned to the console.
-
+---
 ## Console Loop
 You type a message, the program calls generatePirateResponse(...), then prints the “Pirate Response.”
-
+---
 ## Troubleshooting
 “Arr, no content in the response!”
 Ensure you have the correct JSON parsing for the actual API structure.
@@ -136,9 +136,9 @@ Verify your API Key is set up and has Generative AI privileges.
 No Pirate Text
 Check that you appended the system message + user input properly.
 The model may produce an empty response if the prompt is too short or usage constraints were reached. Try a different prompt.
-
+---
 ## License
 This project is provided as-is under an open license (e.g., MIT License) for demonstration purposes. Modify and use at your own discretion.
-
+---
 
 
